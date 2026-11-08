@@ -31,6 +31,6 @@ belong in `docs/INTERVIEW_NOTES.md`. Only measured values may appear in project 
 
 ## Status
 
-M0 repository documentation and engineering rules are complete. The `CRDTKit` package
-and fuzz CLI scaffold are next.
+M0 repository documentation and the Swift 6 `CRDTKit`/`crdt-fuzz` scaffold are
+complete. The `SyncKit` package scaffold is next.
 
