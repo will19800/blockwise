@@ -21,14 +21,16 @@ encryption, iPad, macOS, and App Store distribution are outside the v1 scope.
 
 ## Working agreement
 
-Development follows [the milestone roadmap](docs/ROADMAP.md). Each commit should be
-small, independently reviewable, and leave `main` green. Implementation does not move
-to the next milestone until the current milestone's exit criteria pass.
+Development follows the [design](docs/DESIGN.md), [milestone roadmap](docs/ROADMAP.md),
+and [contribution rules](CONTRIBUTING.md). Each commit should be small, independently
+reviewable, and leave `main` green. Implementation does not move to the next milestone
+until the current milestone's exit criteria pass.
 
 Open choices and deviations belong in `docs/DECISIONS.md`. Interview-facing tradeoffs
 belong in `docs/INTERVIEW_NOTES.md`. Only measured values may appear in project claims.
 
 ## Status
 
-Planning complete. M0 (repository scaffold) is next.
+M0 repository documentation and engineering rules are complete. The `CRDTKit` package
+and fuzz CLI scaffold are next.
 

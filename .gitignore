@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+
+# Xcode
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Go
+Server/bin/
+Server/coverage.out
+
+# Local databases and runtime state
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+*.db
+.env
+.env.*
+!.env.example
+
+# Test and profiling output
+*.profraw
+*.profdata
+coverage/
+TestResults/
+*.xcresult
+
+# Editors
+.idea/
+.vscode/
+*.swp
+
