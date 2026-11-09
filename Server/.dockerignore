@@ -1,0 +1,9 @@
+.git
+.gitignore
+bin
+coverage.out
+*.db
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
