@@ -31,6 +31,6 @@ belong in `docs/INTERVIEW_NOTES.md`. Only measured values may appear in project 
 
 ## Status
 
-M0 repository documentation and both Swift 6 package scaffolds are complete. The
-Blockwise iOS app scaffold is next.
+M0 repository documentation, both Swift 6 packages, and the iOS 18 app/test scaffolds
+are complete. The Go relay and container scaffold is next.
 
