@@ -9,4 +9,5 @@ Record choices not settled by the design document and every intentional deviatio
 | 2026-11-08 | Use `com.willchen.Blockwise` as the app bundle identifier. | It is stable, conventional, and can be changed before distribution without affecting the scaffold. | Accepted |
 | 2026-11-09 | Use `github.com/will19800/blockwise/Server` as the Go module path. | It matches the repository and the design's `Server/` monorepo directory exactly. | Accepted |
 | 2026-11-09 | Listen on port 8080 by default with an environment override. | It is conventional for a containerized HTTP service and keeps local and Compose setup simple. | Accepted |
+| 2026-11-10 | Consolidate the remaining roadmap into 30 cohesive commits. | Larger vertical slices reduce delivery overhead while preserving every milestone exit criterion and test gate. | Accepted |
 

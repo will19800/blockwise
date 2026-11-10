@@ -31,6 +31,6 @@ belong in `docs/INTERVIEW_NOTES.md`. Only measured values may appear in project 
 
 ## Status
 
-M0 repository documentation, Swift packages, iOS app targets, and Go relay/container
-scaffolds are complete. The cross-platform CI workflow is next.
+M0 is complete: repository documentation, Swift packages, iOS app targets, Go relay,
+containers, and cross-platform CI are in place. M1 text CRDT work is next.
 

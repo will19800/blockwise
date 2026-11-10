@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  swift-packages:
+    name: Swift package - ${{ matrix.package }}
+    runs-on: macos-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - CRDTKit
+          - SyncKit
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Report Swift toolchain
+        run: swift --version
+
+      - name: Test package
+        run: swift test --package-path "${{ matrix.package }}" -Xswiftc -warnings-as-errors
+
+  ios-app:
+    name: iOS app
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Report Xcode toolchain
+        run: xcodebuild -version
+
+      - name: Select an available iPhone simulator
+        id: simulator
+        run: |
+          simulator_id="$(
+            xcrun simctl list devices available -j |
+              jq -r '[.devices[] | .[] | select(.name | startswith("iPhone"))][0].udid'
+          )"
+          if [[ -z "${simulator_id}" || "${simulator_id}" == "null" ]]; then
+            echo "No available iPhone simulator was found." >&2
+            exit 1
+          fi
+          echo "id=${simulator_id}" >> "${GITHUB_OUTPUT}"
+
+      - name: Test app
+        run: |
+          xcodebuild test \
+            -project App/Blockwise.xcodeproj \
+            -scheme Blockwise \
+            -destination "platform=iOS Simulator,id=${{ steps.simulator.outputs.id }}" \
+            -derivedDataPath "${RUNNER_TEMP}/BlockwiseDerivedData" \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO \
+            COMPILER_INDEX_STORE_ENABLE=NO
+
+  go-relay:
+    name: Go relay
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: Server
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.22.x
+          cache: false
+
+      - name: Test with race detector
+        run: go test -race -count=1 ./...
+
+      - name: Run static analysis
+        run: go vet ./...
+
+      - name: Build relay
+        run: CGO_ENABLED=0 go build -trimpath -o "${RUNNER_TEMP}/relay" ./cmd/relay
+
+      - name: Build container image
+        working-directory: .
+        run: docker build --tag blockwise-relay:ci Server
+
