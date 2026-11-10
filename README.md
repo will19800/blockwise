@@ -31,6 +31,8 @@ belong in `docs/INTERVIEW_NOTES.md`. Only measured values may appear in project 
 
 ## Status
 
-M0 is complete: repository documentation, Swift packages, iOS app targets, Go relay,
-containers, and cross-platform CI are in place. M1 text CRDT work is next.
+M0 implementation is complete: repository documentation, Swift packages, iOS app
+targets, Go relay, containers, and cross-platform CI are in place. GitHub is currently
+rejecting Actions runs before creating jobs, so the M0 CI exit criterion remains pending
+until the repository owner's Actions billing or account admission lock is resolved.
 
