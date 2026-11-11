@@ -35,5 +35,6 @@ M0 implementation is complete: repository documentation, Swift packages, iOS app
 targets, Go relay, containers, and cross-platform CI are in place. GitHub is currently
 rejecting Actions runs before creating jobs, so the M0 CI exit criterion remains pending
 until the repository owner's Actions billing or account admission lock is resolved. M1
-development is continuing with locally compiled identifiers, clocks, and RGA primitives.
+development now includes identifiers, clocks, RGA primitives, dependency buffering, and
+idempotent text-operation delivery.
 
