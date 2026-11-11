@@ -24,11 +24,15 @@ let package = Package(
         ),
         .executableTarget(
             name: "CRDTFuzz",
+            dependencies: ["CRDTFuzzSupport"]
+        ),
+        .target(
+            name: "CRDTFuzzSupport",
             dependencies: ["CRDTKit"]
         ),
         .testTarget(
             name: "CRDTKitTests",
-            dependencies: ["CRDTKit"]
+            dependencies: ["CRDTKit", "CRDTFuzzSupport"]
         ),
     ],
     swiftLanguageModes: [.v6]
