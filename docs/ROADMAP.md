@@ -22,6 +22,12 @@ and the Go relay/container scaffold.
 Exit criteria: three replicas converge across 1,000 seeded iterations with duplicate
 and out-of-order delivery.
 
+Completed locally: immutable text operations, dependency buffering, duplicate
+suppression, and deterministic RGA integration are covered by unit tests and the seeded
+fuzzer. The M1 exit run completed 1,000 three-replica iterations with delayed,
+out-of-order, and duplicate delivery. GitHub-hosted verification remains pending on the
+repository-level Actions admission issue recorded under M0.
+
 1. `feat(crdt): add identifiers Lamport clocks and tested RGA primitives`
 2. `feat(crdt): integrate pending text operations and idempotent delivery`
 3. `feat(fuzz): prove deterministic three-replica text convergence`

@@ -35,8 +35,8 @@ M0 implementation is complete: repository documentation, Swift packages, iOS app
 targets, Go relay, containers, and cross-platform CI are in place. GitHub is currently
 rejecting Actions runs before creating jobs, so the M0 CI exit criterion remains pending
 until the repository owner's Actions billing or account admission lock is resolved. M1
-development now includes identifiers, clocks, RGA primitives, dependency buffering, and
-idempotent text-operation delivery. The seeded `crdt-fuzz` executable now exercises
-three-replica convergence under delayed, reordered, and duplicate delivery and prints a
-replayable seed and operation trace on failure.
+is complete locally: identifiers, clocks, RGA text integration, dependency buffering,
+idempotent delivery, and the 1,000-iteration three-replica convergence gate all pass.
+The seeded `crdt-fuzz` executable prints a replayable seed and operation trace on
+failure. M2 block-tree and canonical-snapshot work is next.
 
